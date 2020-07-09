@@ -23,25 +23,33 @@ typedef struct rectangle_t {
 rectangle canonicalize(rectangle r) {
   //WRITE THIS FUNCTION
   if (r.width < 0) {
+    r.x += r.width;
     r.width *= -1;
-    r.x -= r.width;
   }
 
   if (r.height < 0) {
-    r.height *= -1;
-    r.y -= r.height;
+    r.y += r.height;
+    r.height *= -1;    
   }
   return r;
 }
 rectangle intersection(rectangle r1, rectangle r2) {
   //WRITE THIS FUNCTION
   rectangle rAns;
-  canonicalize(r1);
-  canonicalize(r2);
+
+  r1 = canonicalize(r1);
+  r2 = canonicalize(r2);
+
+  if (((r1.x + r1.width < r2.x) || (r2.x + r2.width < r1.x)) || ((r1.y + r1.height < r2.y) || (r2.y + r2.height < r1.y))) {
+    rAns.width = 0;
+    rAns.height = 0;
+    return rAns;
+  }
+  
   rAns.x = max(r1.x, r2.x);
   rAns.y = max(r1.y, r2.y);
-  rAns.width = min(r1.width, r2.width);
-  rAns.height = min(r1.height, r2.height);
+  rAns.width = min(r1.x + r1.width, r2.x + r2.width) - rAns.x;
+  rAns.height = min(r1.height + r1.y, r2.height + r2.y) - rAns.y;
   return rAns;
 }
 
