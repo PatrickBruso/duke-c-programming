@@ -40,6 +40,7 @@ void retirement(int startAge, double initial, retire_info working, retire_info r
     
     calculate(startAge, initial, working);
     //need to use calculate funciton for retired but need current age in months and current balance to pass into function.
+    //probably need to set above function as a variable and then return age and balance back to variable at end of calculate function.
 }
 
 int main()
