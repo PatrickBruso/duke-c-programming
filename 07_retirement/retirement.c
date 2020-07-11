@@ -11,7 +11,8 @@ struct _retire_info {
 //assign typedef to struct
 typedef struct _retire_info retire_info;
 
-void calculate(int age, double balance, retire_info info) {
+//function to calculate age (years and months) and balance for print statement
+double calculate(int age, double balance, retire_info info) {
     double interest;
     double contribution;
 
@@ -23,6 +24,8 @@ void calculate(int age, double balance, retire_info info) {
         printf("Age %3d month %2d you have $%.2lf\n", (age/12), (age % 12), balance);
         info.months--;
     }
+
+    return balance;
 }
 
 //function for two tasks
@@ -38,9 +41,9 @@ void retirement(int startAge, double initial, retire_info working, retire_info r
     //print out current balance and age info
     printf("Age %3d month %2d you have $%.2lf\n", currYears, currMonths, initial);
     
-    calculate(startAge, initial, working);
-    //need to use calculate funciton for retired but need current age in months and current balance to pass into function.
-    //probably need to set above function as a variable and then return age and balance back to variable at end of calculate function.
+    //call calculate function twice for working and retired
+    double a = calculate(startAge, initial, working);
+    calculate((327 + 489), a, retired);
 }
 
 int main()
@@ -52,7 +55,7 @@ int main()
     working.contribution = 1000;
     working.rate_of_return = (.045 / 12);
 
-    retired.months = 384;
+    retired.months = 383;
     retired.contribution = -4000;
     retired.rate_of_return = (.01 / 12);
 
