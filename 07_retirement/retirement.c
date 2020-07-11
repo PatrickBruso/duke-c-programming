@@ -39,6 +39,7 @@ void retirement(int startAge, double initial, retire_info working, retire_info r
     printf("Age %3d month %2d you have $%.2lf\n", currYears, currMonths, initial);
     
     calculate(startAge, initial, working);
+    //need to use calculate funciton for retired but need current age in months and current balance to pass into function.
 }
 
 int main()
