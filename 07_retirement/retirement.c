@@ -14,7 +14,6 @@ typedef struct _retire_info retire_info;
 //function to calculate age (years and months) and balance for print statement
 double calculate(int age, double balance, retire_info info) {
     double interest;
-    double contribution;
 
     while (info.months > 0) {
         interest = balance * info.rate_of_return;
