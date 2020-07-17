@@ -10,7 +10,27 @@ void assert_card_valid(card_t c) {
 }
 
 const char * ranking_to_string(hand_ranking_t r) {
-  return "";
+  if (r.STRAIGHT_FLUSH) {
+    return "Straight Flush";
+  } else if (r.FOUR_OF_A_KIND) {
+    return "Four of a Kind";
+  } else if (r.FULL_HOUSE) {
+    return "Full House";
+  } else if (r.FLUSH) {
+    return "Flush";
+  } else if (r.STRAIGHT) {
+    return "Straight";
+  } else if (r.THREE_OF_A_KIND) {
+    return "Three of a Kind";
+  } else if (r.TWO_PAIR) {
+    return "Two Pair";
+  } else if (r.PAIR) {
+    return "Pair";
+  } else if (r.NOTHING) {
+    return "Nothing";
+  } else {
+  return "error";
+  }
 }
 
 char value_letter(card_t c) {
