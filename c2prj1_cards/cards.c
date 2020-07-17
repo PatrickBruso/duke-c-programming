@@ -34,17 +34,58 @@ const char * ranking_to_string(hand_ranking_t r) {
 }
 
 char value_letter(card_t c) {
-  return 'x';
+  if (c.value == 2) {
+    return "2";
+  } else if (c.value == 3) {
+    return "3";
+  } else if (c.value == 4) {
+    return "4";
+  } else if (c.value == 5) {
+    return "5";
+  } else if (c.value == 6) {
+    return "6";
+  } else if (c.value == 7) {
+    return "7";
+  } else if (c.value == 8) {
+    return "8";
+  } else if (c.value == 9) {
+    return "9";
+  } else if (c.value == 10) {
+    return "0";
+  } else if (c.value == VALUE_JACK) {
+    return "J";
+  } else if (c.value == VALUE_QUEEN) {
+    return "Q";
+  } else if (c.value == VALUE_KING) {
+    return "K";
+  } else if (c.value == VALUE_ACE) {
+    return "A";
+  } else {
+    return "?";
+  }
 }
 
 
 char suit_letter(card_t c) {
-  return 'x';
+  if (c.suit == SPADES) {
+    return "s";
+  } else if (c.suit == HEARTS) {
+    return "h";
+  } else if (c.suit == DIAMONDS) {
+    return "d";
+  }else if (c.suit == CLUBS) {
+    return "c";
+  } else {
+    return "?";
+  }
   
 }
 
 void print_card(card_t c) {
-
+  char value = value_letter(c); //assign value_letter to new char variable
+  char suit = suit_letter(c); //assign suit_letter to new char variable
+  printf("%c%c", value, suit); //print both chars using newly assigned variables
+  return 0; //exit function
 }
 
 card_t card_from_letters(char value_let, char suit_let) {
