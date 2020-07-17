@@ -103,12 +103,10 @@ card_t card_from_letters(char value_let, char suit_let) {
 
 card_t card_from_num(unsigned c) {
   card_t temp;
-  int i;
-
-  for (i = 0; i < 52; i++) {  // wait this doesn't work it needs to refer to c
-    temp.value = c % 13 + 2;
-    temp.suit = c / 13;
-    return temp;
-  }
-  return 0;
+  
+  assert(c >= 0 && c < 52);
+  
+  temp.value = c % 13 + 2;
+  temp.suit = c / 13;
+  return temp;
 }
