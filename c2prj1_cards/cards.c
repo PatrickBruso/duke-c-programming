@@ -90,10 +90,25 @@ void print_card(card_t c) {
 
 card_t card_from_letters(char value_let, char suit_let) {
   card_t temp;
+  temp.value = value_let;
+  temp.suit = suit_let;
   return temp;
+
+  // if statement to check for valid values
+  if (value_letter(value_let) == "?" || suit_letter(suit_let) == "?") {
+    printf("Error: Program Quitting");
+    exit(EXIT_FAILURE);
+  }
 }
 
 card_t card_from_num(unsigned c) {
   card_t temp;
-  return temp;
+  int i;
+
+  for (i = 0; i < 52; i++) {  // wait this doesn't work it needs to refer to c
+    temp.value = c % 13 + 2;
+    temp.suit = c / 13;
+    return temp;
+  }
+  return 0;
 }
