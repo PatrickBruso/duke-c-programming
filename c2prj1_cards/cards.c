@@ -149,8 +149,33 @@ card_t card_from_letters(char value_let, char suit_let) {
   case '0':
     temp.value = 10;
     break;
-  temp.value = value_let;
-  temp.suit = suit_let;
+  case 'J':
+    temp.value = VALUE_JACK;
+    break;
+  case 'Q':
+    temp.value = VALUE_QUEEN;
+    break;
+  case 'K':
+    temp.value = VALUE_KING;
+    break;
+  case 'A':
+    temp.value = VALUE_ACE;
+    break;
+  }
+  switch(suit_let) {
+  case 's':
+    temp.suit = SPADES;
+    break;
+  case 'h':
+    temp.suit = HEARTS;
+    break;
+  case 'd':
+    temp.suit = DIAMONDS;
+    break;
+  case 'c':
+    temp.suit = CLUBS;
+    break;
+  }
   assert_card_valid(temp);
 
   return temp;
