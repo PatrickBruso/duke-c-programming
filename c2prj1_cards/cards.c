@@ -10,75 +10,106 @@ void assert_card_valid(card_t c) {
 }
 
 const char * ranking_to_string(hand_ranking_t r) {
-  if (r.STRAIGHT_FLUSH) {
-    return "Straight Flush";
-  } else if (r.FOUR_OF_A_KIND) {
-    return "Four of a Kind";
-  } else if (r.FULL_HOUSE) {
-    return "Full House";
-  } else if (r.FLUSH) {
-    return "Flush";
-  } else if (r.STRAIGHT) {
-    return "Straight";
-  } else if (r.THREE_OF_A_KIND) {
-    return "Three of a Kind";
-  } else if (r.TWO_PAIR) {
-    return "Two Pair";
-  } else if (r.PAIR) {
-    return "Pair";
-  } else if (r.NOTHING) {
-    return "Nothing";
-  } else {
-  return "error";
+  switch(r) {
+    case STRAIGHT_FLUSH:
+      return "Straight Flush";
+      break;
+    case FOUR_OF_A_KIND:
+      return "Four of a Kind";
+      break;
+    case FULL_HOUSE:
+      return "Full House";
+      break;
+    case FLUSH:
+      return "Flush";
+      break;
+    case STRAIGHT:
+      return "Straight";
+      break;
+    case THREE_OF_A_KIND:
+      return "Three of a Kind";
+      break;
+    case TWO_PAIR:
+      return "Two Pair";
+      break;
+    case PAIR:
+      return "Pair";
+      break;
+    case NOTHING:
+      return "Nothing";
+      break;
+    default:
+      return "Invalid";
   }
+  return 0;
 }
 
 char value_letter(card_t c) {
-  if (c.value == 2) {
-    return "2";
-  } else if (c.value == 3) {
-    return "3";
-  } else if (c.value == 4) {
-    return "4";
-  } else if (c.value == 5) {
-    return "5";
-  } else if (c.value == 6) {
-    return "6";
-  } else if (c.value == 7) {
-    return "7";
-  } else if (c.value == 8) {
-    return "8";
-  } else if (c.value == 9) {
-    return "9";
-  } else if (c.value == 10) {
-    return "0";
-  } else if (c.value == VALUE_JACK) {
-    return "J";
-  } else if (c.value == VALUE_QUEEN) {
-    return "Q";
-  } else if (c.value == VALUE_KING) {
-    return "K";
-  } else if (c.value == VALUE_ACE) {
-    return "A";
-  } else {
-    return "?";
+  switch(c.value) {
+    case 2:
+      return "2";
+      break;
+    case 3:
+      return "3";
+      break;
+    case 4:
+      return "4";
+      break;
+    case 5:
+      return "5";
+      break;
+    case 6:
+      return "6";
+      break;
+    case 7:
+      return "7";
+      break;
+    case 8:
+      return "8";
+      break;
+    case 9:
+      return "9";
+      break;
+    case 10:
+      return "0";
+      break;
+    case VALUE_JACK:
+      return "J";
+      break;
+    case VALUE_QUEEN:
+      return "Q";
+      break;
+    case VALUE_KING:
+      return "K";
+      break;
+    case VALUE_ACE:
+      return "A";
+      break;
+    default:
+      return "Invalid";
   }
+  return 0;
 }
 
 
 char suit_letter(card_t c) {
-  if (c.suit == SPADES) {
-    return "s";
-  } else if (c.suit == HEARTS) {
-    return "h";
-  } else if (c.suit == DIAMONDS) {
-    return "d";
-  }else if (c.suit == CLUBS) {
-    return "c";
-  } else {
-    return "?";
+  switch(c.suit) {
+    case SPADES:
+      return "s";
+      break;
+    case HEARTS:
+      return "h";
+      break;
+    case DIAMONDS:
+      return "d";
+      break;
+    case CLUBS:
+      return "c";
+      break;
+    default:
+      return "Invalid";
   }
-  
+  return 0;
 }
 
 void print_card(card_t c) {
@@ -92,13 +123,9 @@ card_t card_from_letters(char value_let, char suit_let) {
   card_t temp;
   temp.value = value_let;
   temp.suit = suit_let;
-  return temp;
+  assert_card_valid(temp);
 
-  // if statement to check for valid values
-  if (value_letter(value_let) == "?" || suit_letter(suit_let) == "?") {
-    printf("Error: Program Quitting");
-    exit(EXIT_FAILURE);
-  }
+  return temp;
 }
 
 card_t card_from_num(unsigned c) {
